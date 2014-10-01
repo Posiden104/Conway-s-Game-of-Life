@@ -4,7 +4,7 @@ public class GOL {
 
 	public static final int GEN = 1000;
 	public static int passed = 0;
-	private static long timer = 10L;
+	private static long timer = 70L;
 
 	public static Table t;
 
@@ -12,7 +12,7 @@ public class GOL {
 
 	public static void main(String[] args) {
 		Screen s = new Screen();
-		t = new Table(Screen.WIDTH / Screen.SIZE, Screen.HEIGHT / Screen.SIZE, false);
+		t = new Table(Screen.HEIGHT / Screen.SIZE - 10, Screen.WIDTH / Screen.SIZE - 5, true);
 
 		while (running) {
 			while (passed <= GEN) {

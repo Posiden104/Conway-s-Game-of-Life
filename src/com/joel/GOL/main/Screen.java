@@ -18,8 +18,10 @@ public class Screen extends Canvas {
 	public JFrame frame;
 
 	public int width, height;
-	public static int WIDTH = 1920, HEIGHT = 1080;
+	public static int HEIGHT = 720;
+	public static int WIDTH = HEIGHT * 16 / 9;
 	public static int SIZE = 6;
+	private static int gen = 0;
 
 	public static BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 	public static int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
@@ -29,7 +31,7 @@ public class Screen extends Canvas {
 		this.width = WIDTH;
 		this.height = HEIGHT;
 
-		pixelBuffer = new int[width * height];
+		pixelBuffer = new int[WIDTH  * HEIGHT];
 
 		setupJFrame();
 	}
@@ -60,9 +62,11 @@ public class Screen extends Canvas {
 		g.setFont(new Font("Verdana", 0, 50));
 
 		// g.drawString("Hello, World!", 100, 100);
+		g.drawString("" + gen, 10, 100);
 
 		g.dispose();
 		bs.show();
+		gen++;
 	}
 
 	public static void bufferPixel(int x, int y, boolean isAlive) {
@@ -80,7 +84,7 @@ public class Screen extends Canvas {
 		frame.add(this);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(false);
+		// frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
